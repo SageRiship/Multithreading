@@ -1,0 +1,27 @@
+Notify -> convert block thread into Runnable
+wait -> 1. to release monitor object
+	2. gone to wait state until specific event not done
+
+Race condition : Single resource is available and multiple thread trying to access it without coordination is called race condition 
+	- for this we have to do synchronization
+
+Using synchronization keyword we didnt achieve synchronization , we achieve locking and unlocking 
+ 
+//this is not synchronization , this is locking and unlocking
+  public synchronized int sum(int[] arr) {
+        int result = 0;
+        for (int i = 0; i < arr.length; i++) {
+            result = result + arr[i];
+            System.out.println("Running Total for thread :" + Thread.currentThread().getName() + " is :" + result
+                    + " Thread state :" + Thread.currentThread().getState());
+        }
+        return result;
+    }
+
+=> Inter thread communcation is called synchronization
+
+notify() => send notification to the single waiting thread, which is waiting get access of monitor object(lock) associated with it.
+
+wait() => release the lock and move thread into waiting state 
+
+-> we can call wait, notify() , notifyAll() through synchronized block or synvhronized method
